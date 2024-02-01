@@ -1,8 +1,50 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Cadastro de Usuário";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Cadastrar" method="post">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="nome">First name</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="First name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="sobrenome">Last name</label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Last name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="usuario">Username</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2"></span>
+                </div>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="cidade">City</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="City" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="estado">State</label>
+            <input type="text" class="form-control" id="estado" name="estado" placeholder="State" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="cep">Zip</label>
+            <input type="text" class="form-control" id="cep" name="cep" placeholder="Zip" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+            <label class="form-check-label" for="invalidCheck2">
+                Agree to terms and conditions
+            </label>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+</form>

@@ -8,7 +8,7 @@ namespace Tela_Cadastro.Infra.Repositories
 {
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
-        protected UsuarioRepository(AppDbContext db) : base(db) { }
+        public UsuarioRepository(AppDbContext db) : base(db) { }
 
 
         public async Task CriarUsuario(Usuario usuario) 

@@ -4,13 +4,28 @@ using Tela_Cadastro.Model.Models;
 
 namespace Tela_Cadastro.Api.Controllers
 {
-    public class UsuarioController(IUsuarioRepository usuarioRepository) : Controller
+    public class UsuarioController : Controller
     {
-        private readonly IUsuarioRepository _usuarioRepository = usuarioRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+        }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost("Cadastrar")]
+        public async Task<IActionResult> Cadastrar(Usuario usuario)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _usuarioRepository.AdicionarAsync(usuario);
+            return RedirectToAction("Index");
         }
 
         [HttpPut("{id}")]
